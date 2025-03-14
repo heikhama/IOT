@@ -1,0 +1,43 @@
+#include <ThingSpeak.h>
+#include <ESP8266WiFi.h>
+
+const char *ssid = "your_SSID";
+const char *password = "your_PASSWORD";
+
+WiFiClient client;
+unsigned long myChannelNumber = 123456;  // ThingSpeak Channel Number
+const char *myWriteAPIKey = "your_API_KEY";  // Your ThingSpeak Write API Key
+
+void setup() {
+  Serial.begin(9600);
+  WiFi.begin(ssid, password);
+  
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Connecting to WiFi...");
+  }
+  
+  ThingSpeak.begin(client);
+}
+
+void loop() {
+  float temperature = dht.readTemperature();
+  float humidity = dht.readHumidity();
+  
+  if (isnan(temperature) || isnan(humidity)) {
+    Serial.println("Failed to read from sensor!");
+    return;
+  }
+  
+  ThingSpeak.setField(1, temperature);  // Set field 1 as temperature
+  ThingSpeak.setField(2, humidity);     // Set field 2 as humidity
+
+  int responseCode = ThingSpeak.writeFields(myChannelNumber, myWriteAPIKey);
+  if(responseCode == 200){
+    Serial.println("Data sent to ThingSpeak");
+  } else {
+    Serial.println("Error sending data to ThingSpeak");
+  }
+  
+  delay(2000);
+}
