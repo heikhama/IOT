@@ -75,3 +75,20 @@ canvas {
     align-items: center;
     justify-content: center;
 }
+
+.btn-save {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background: linear-gradient(to bottom, #4CAF50 0%, #2E7D32 100%);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 5px #1B5E20;
+    cursor: pointer;
+}
+
+.btn-save:active {
+    box-shadow: 0 2px #1B5E20;
+    transform: translateY(3px);
+}
