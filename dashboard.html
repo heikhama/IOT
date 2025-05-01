@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h2>Live Temperature</h2>
+  <p id="temp-value">--</p>
+  <button onclick="saveTemperature()">Save Current Temperature</button>
+  <canvas id="tempChart"></canvas>
+
+  <script>
+    let tempChart;
+    const data = { labels: [], datasets: [{ label: 'Temp (°C)', data: [], borderColor: 'red', tension: 0.3 }] };
+    const config = { type: 'line', data: data };
+    tempChart = new Chart(document.getElementById('tempChart'), config);
+
+    function fetchTemperature() {
+      fetch('/temp')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('temp-value').innerText = data.temperature + " °C";
+          tempChart.data.labels.push(data.timestamp);
+          tempChart.data.datasets[0].data.push(data.temperature);
+          if (tempChart.data.labels.length > 60) {
+            tempChart.data.labels.shift();
+            tempChart.data.datasets[0].data.shift();
+          }
+          tempChart.update();
+        });
+    }
+
+    function saveTemperature() {
+      fetch('/save', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => alert("Saved to DB!"));
+    }
+
+    setInterval(fetchTemperature, 1000);  // Every second
+  </script>
+
+	<form action="/logout" method="get">
+    <button type="submit">Logout</button>
+</form>
+
+</body>
+</html>

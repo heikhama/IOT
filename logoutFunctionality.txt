@@ -1,0 +1,13 @@
+🔒 3. Add Logout Functionality
+
+from flask import session, redirect
+
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return redirect('/login')
+
+
+<form action="/logout" method="get">
+    <button type="submit">Logout</button>
+</form>
