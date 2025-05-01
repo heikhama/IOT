@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='graph.js') }}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Live System Monitor</h2>
+        <label>Temperature:</label>
+        <input id="temp" readonly> °C<br>
+        <label>Power Usage:</label>
+        <input id="power" readonly> Watts<br>
+        <canvas id="graph" width="500" height="200"></canvas>
+    </div>
+</body>
+</html>
