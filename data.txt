@@ -1,0 +1,14 @@
+1/5/2025, 9:06:26 pm - Temperature: 64°C, Power: 21.77861785888672W
+1/5/2025, 9:06:30 pm - Temperature: 73°C, Power: 22.58917236328125W
+1/5/2025, 9:06:33 pm - Temperature: 67°C, Power: 21.768863677978516W
+1/5/2025, 9:06:35 pm - Temperature: 81°C, Power: 21.87454605102539W
+1/5/2025, 9:10:25 pm - Temperature: °C, Power: W
+1/5/2025, 9:10:27 pm - Temperature: °C, Power: W
+1/5/2025, 9:10:28 pm - Temperature: °C, Power: W
+1/5/2025, 9:10:29 pm - Temperature: °C, Power: W
+1/5/2025, 9:10:29 pm - Temperature: 54°C, Power: 5.520382881164551W
+1/5/2025, 9:10:30 pm - Temperature: 65°C, Power: 22.653934478759766W
+1/5/2025, 9:10:31 pm - Temperature: 66°C, Power: 21.973310470581055W
+1/5/2025, 9:10:32 pm - Temperature: 66°C, Power: 21.973310470581055W
+1/5/2025, 9:10:33 pm - Temperature: 63°C, Power: 21.56974983215332W
+1/5/2025, 9:10:34 pm - Temperature: 63°C, Power: 21.56974983215332W

@@ -3,13 +3,13 @@
 <head>
     <title>Main</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
 </head>
 <body>
     <h1>Welcome to IoT Dashboard</h1>
     <nav>
         <a href="/login" target="content">Login</a> |
-        <a href="/logout">Logout</a>
+        <a href="/logout">Logout</a> |
+        <a href="/datadisplay" target="content">Data</a>
     </nav>
     <iframe name="content" width="100%" height="600px" style="border:none;"></iframe>
 </body>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Records</title>
+    <style>
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            border-radius: 12px;
+        }
+        th, td {
+            padding: 12px 15px;
+            background: #f0f8ff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        th {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+        }
+        tr:hover td {
+            background-color: #e0f7fa;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align:center;">Saved Sensor Data</h2>
+    <table>
+        <tr>
+            <th>Date & Time</th>
+            <th>Temperature (°C)</th>
+            <th>Power (Watts)</th>
+        </tr>
+        {% for time, temp, power in rows %}
+        <tr>
+            <td>{{ time }}</td>
+            <td>{{ temp }}</td>
+            <td>{{ power }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -60,6 +60,37 @@ def data():
         'power': stats['power']
     })
 
+@app.route('/save', methods=['POST'])
+def save():
+    data = request.get_json()
+    temperature = data['temperature']
+    power = data['power']
+    timestamp = data['timestamp']
+
+    file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data.txt')
+    
+    with open(file_path, 'a') as f:
+        f.write(f"{timestamp} - Temperature: {temperature}°C, Power: {power}W\n")
+
+    return jsonify({"status": "success"}), 200
+
+@app.route('/datadisplay')
+def data_page():
+    rows = []
+    try:
+        with open('data.txt', 'r') as f:
+            for line in f:
+                parts = line.strip().split(' - ')
+                if len(parts) == 2:
+                    time, data = parts
+                    temp_part, power_part = data.split(', ')
+                    temp = temp_part.split(':')[1].strip()
+                    power = power_part.split(':')[1].strip()
+                    rows.append((time, temp, power))
+    except FileNotFoundError:
+        rows = []
+
+    return render_template('data.html', rows=rows)
 
 if __name__ == '__main__':
     app.run(debug=True)
